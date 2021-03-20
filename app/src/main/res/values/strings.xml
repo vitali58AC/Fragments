@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Fragments</string>
+    <string name="sign_in">Log in</string>
+    <string name="enter_mail">enter you e-mail address</string>
+    <string name="enter_password">Enter password</string>
+    <string name="developer_logo">Developer logo</string>
+    <string name="log_in">Log in</string>
+    <string name="checkbox_user">I\'m is android developer</string>
+    <string name="url_logoDev">https://images.squarespace-cdn.com/content/v1/5463ae92e4b029776707f405/1415935681262-P1GO02TUYC9M6KZIELF0/ke17ZwdGBToddI8pDm48kHUjYNBkLXQKCznIqtYhc75Zw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIwgOteG8CkJnLUxqlPkfXMirsdtCHMJ1T-2vGG9xGNfI/GoogleDevelopers-logo.png</string>
+    <string name="messageAfterLogin">User: %1$s</string>
+    <string name="hack_the_system">Hack the system</string>
+    <string name="short_pass">Your pass less 7 chair!</string>
+    <string name="not_email">You entered not e-mail!</string>
+    <string name="bad_email_pass">You entered not e-mail or length your pass less 7 chairs!</string>
+    <string name="build_your_first_app">Build your first app</string>
+    <string name="firstAppFirstParagraphText">This section describes how to build a simple Android app. First, you learn how to create a "Hello, World!" project with Android Studio and run it. Then, you create a new interface for the app that takes user input and switches to a new screen in the app to display it.\n\n Before you start, there are two fundamental concepts that you need to understand about Android apps: how they provide multiple entry points, and how they adapt to different devices.</string>
+    <string name="app_provide_multiple_entry_points"><p><b>Apps provide multiple entry points</b></p>\n\n <p>Android apps are built as a combination of components that can be invoked individually. For example, an activity is a type of app component that provides a user interface (UI).</p><p> The "main" activity starts when the user taps your app\'s icon. You can also direct the user to an activity from elsewhere, such as from a notification or even from a different app.</p> <p>Other components, such as broadcast receivers and services, allow your app to perform background tasks without a UI.</p><p> After you build your first app, you can learn more about the other app components at Application fundamentals.</p></string>
+    <string name="app_adapt_to_diffents_devices"><p><b>Apps adapt to different devices</b></p> \n\n <p>Android allows you to provide different resources for different devices. For example, you can create different layouts for different screen sizes. The system determines which layout to use based on the screen size of the current device.</p> <p>If any of your app\'s features need specific hardware, such as a camera, you can query at runtime whether the device has that hardware or not, and then disable the corresponding features if it doesn\'t. You can specify that your app requires certain hardware so that Google Play won\'t allow the app to be installed on devices without them.</p> <p>After you build your first app, learn more about device configurations at Device compatibility overview.</p></string>
+    <string name="firstAppLastParagraphText">With these two basic concepts in mind, you have two options. If you prefer staying in the main documentation, which makes it easy to branch off to other topics to learn more about specific aspects of building an app, you can proceed to the next lesson to build your first app. However, if you like to follow step-by-step tutorials that explain every step from beginning to end, then consider the Android Basics in Kotlin course.</string>
+    <string name="firstAppNextActivityText"><h1><p>Next</p></h1>\n <b>Create an Android project</b> </string>
+    <string name="need_help">Need help?</string>
+    <string name="mask_phone">+7 (XXX)XXX-XX-XX</string>
+    <string name="call_your_developer_friend">Call your developer friend</string>
+    <string name="call">Call</string>
+    <string name="do_not_need_help">I don\'t need help</string>
+    <string name="guides_copy_from">You are open URL:  </string>
+    <string name="source">Open app</string>
+    <string name="launch_that_activity_again">Launch that activity again</string>
+</resources>
