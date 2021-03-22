@@ -19,7 +19,7 @@ import com.example.viewandlayout.databinding.FragmentLoginBinding
 class LoginFragment() : Fragment() {
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
-    private var validateState = FormState(false, "")
+    private var validateState = FormState(false, "", false)
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,8 +47,8 @@ class LoginFragment() : Fragment() {
         if (savedInstanceState != null) {
             validateState = savedInstanceState.getParcelable<FormState>("Parcel")
                 ?: error("Null in parcel")
-            binding.loginButton.isEnabled = savedInstanceState.getBoolean("button")
         }
+        binding.loginButton.isEnabled = validateState.buttonValid
         fun callState() {
             if (validateState.valid) {
                 binding.errorTextView.visibility = View.GONE
@@ -93,10 +93,7 @@ class LoginFragment() : Fragment() {
         //Реализация чебкокса
         binding.checkDevelop.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
-                binding.loginButton.isEnabled =
-                    binding.inputMail.text.toString()
-                        .isNotBlank() && binding.inputPass.text.toString()
-                        .isNotBlank() && binding.checkDevelop.isChecked
+                buttonAvailable()
             }
         })
 
@@ -178,6 +175,16 @@ class LoginFragment() : Fragment() {
         binding.inputPass.isEnabled = enable
     }
 
+    private fun buttonAvailable() {
+        binding.loginButton.isEnabled =
+            binding.inputMail.text.toString()
+                .isNotBlank() && binding.inputPass.text.toString()
+                .isNotBlank() && binding.checkDevelop.isChecked
+        if (binding.loginButton.isEnabled) {
+            validateState.validateButton(true)
+        } else validateState.validateButton(false)
+    }
+
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
@@ -186,6 +193,10 @@ class LoginFragment() : Fragment() {
         outState.putParcelable("Parcel", validateState)
     }
 
+    override fun onResume() {
+        super.onResume()
+        buttonAvailable()
+    }
     override fun onDestroy() {
         super.onDestroy()
         _binding = null

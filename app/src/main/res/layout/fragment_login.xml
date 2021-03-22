@@ -7,7 +7,7 @@
 
     <ImageView
         android:id="@+id/image_glide"
-        android:layout_width="0dp"
+        android:layout_width="300dp"
         android:layout_height="0dp"
         android:contentDescription="@string/developer_logo"
         app:layout_constraintDimensionRatio="21:5"

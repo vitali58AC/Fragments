@@ -13,28 +13,14 @@
         android:layout_height="wrap_content"
         tools:context=".MainActivity">
 
-        <ImageView
-            android:id="@+id/image_glide"
+        <FrameLayout
+            android:id="@+id/fragmentContainer"
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:contentDescription="@string/developer_logo"
-            app:layout_constraintDimensionRatio="24:2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:fontFamily="sans-serif-light"
-            android:text="@string/log_in"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/image_glide" />
+            android:layout_height="match_parent"
+            tools:layout_height="match_parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guidelineMainLeft"
+            app:layout_constraintEnd_toStartOf="@id/guidelineMainRight"/>
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guidelineMainLeft"
@@ -53,108 +39,6 @@
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintGuide_end="16dp" />
-
-        <EditText
-            android:id="@+id/input_mail"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:autofillHints="EmailAddress"
-            android:ems="10"
-            android:hint="@string/enter_mail"
-            android:inputType="textEmailAddress"
-            app:layout_constraintBottom_toTopOf="@+id/input_pass"
-            app:layout_constraintEnd_toStartOf="@+id/guidelineMainRight"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="@+id/guidelineMainLeft"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
-            app:layout_constraintVertical_chainStyle="spread_inside" />
-
-        <EditText
-            android:id="@+id/input_pass"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:autofillHints="Password"
-            android:ems="10"
-            android:hint="@string/enter_password"
-            android:inputType="textPassword"
-            app:layout_constraintEnd_toStartOf="@+id/guidelineMainRight"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="@+id/guidelineMainLeft"
-            app:layout_constraintTop_toBottomOf="@+id/input_mail" />
-
-        <TextView
-            android:id="@+id/errorTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            app:layout_constraintEnd_toStartOf="@id/guidelineMainRight"
-            app:layout_constraintStart_toStartOf="@id/guidelineMainLeft"
-            app:layout_constraintTop_toBottomOf="@id/input_pass"/>
-
-        <CheckBox
-            android:id="@+id/checkDevelop"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@string/checkbox_user"
-            app:layout_constraintStart_toStartOf="@+id/guidelineMainLeft"
-            app:layout_constraintTop_toBottomOf="@+id/errorTextView" />
-
-        <Button
-            android:id="@+id/login_button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:background="@android:color/holo_blue_bright"
-            android:enabled="false"
-            android:text="@string/log_in"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/guidelineMainRight"
-            app:layout_constraintStart_toStartOf="@+id/guidelineMainLeft" />
-
-        <LinearLayout
-            android:id="@+id/child_container"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toTopOf="@+id/login_button"
-            app:layout_constraintEnd_toStartOf="@+id/guidelineMainRight"
-            app:layout_constraintStart_toStartOf="@+id/guidelineMainLeft"
-            app:layout_constraintTop_toBottomOf="@+id/input_pass" />
-
-        <TextView
-            android:id="@+id/click_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@+id/loginText"
-            app:layout_constraintEnd_toStartOf="@+id/guidelineMainRight"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="@+id/guidelineMainLeft" />
-
-        <TextView
-            android:id="@+id/loginText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            app:layout_constraintBottom_toTopOf="@+id/login_button"
-            app:layout_constraintEnd_toStartOf="@+id/guidelineMainRight"
-            app:layout_constraintStart_toStartOf="@+id/guidelineMainLeft" />
-
-        <Button
-            android:id="@+id/longOperationButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:background="@android:color/holo_red_dark"
-            android:text="@string/hack_the_system"
-            app:layout_constraintBottom_toTopOf="@+id/login_button"
-            app:layout_constraintEnd_toStartOf="@+id/guidelineMainRight"
-            app:layout_constraintTop_toBottomOf="@+id/input_pass"
-            app:layout_constraintVertical_bias="0.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

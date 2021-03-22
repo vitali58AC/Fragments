@@ -7,11 +7,13 @@ import kotlinx.parcelize.Parcelize
 
 data class FormState(
     val valid: Boolean,
-    val message: String
+    val message: String,
+    val buttonValid: Boolean
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readBoolean(),
-        parcel.readString().orEmpty()
+        parcel.readString().orEmpty(),
+        parcel.readBoolean()
     ) {
     }
 
@@ -27,9 +29,14 @@ data class FormState(
         return copy(message = error )
     }
 
+    fun validateButton(boolState: Boolean): FormState {
+        return copy(buttonValid = boolState)
+    }
+
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeBoolean(valid)
         parcel.writeString(message)
+        parcel.writeBoolean(buttonValid)
     }
 
     override fun describeContents(): Int {
