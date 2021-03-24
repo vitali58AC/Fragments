@@ -64,12 +64,15 @@ class LoginFragment() : Fragment() {
                 if (checkValidationMail() && checkValidatePass()) {
                     validateState = validateState.validateTrue()
                     waitLogin()
-                    val activityClass = FirstAppActivity::class.java
+     /*               val activityClass = FirstAppActivity::class.java
                     val firstAppActivityIntent = Intent(
                         activity,
                         activityClass
                     )
-                    startActivity(firstAppActivityIntent)
+                    startActivity(firstAppActivityIntent)*/
+                    parentFragmentManager.beginTransaction()
+                        .replace(R.id.fragmentContainer, ListFragment())
+                        .commit()
                 } else {
                     validateState = validateState.validateFalse()
                     if (!checkValidatePass()) {

@@ -26,4 +26,6 @@
     <string name="guides_copy_from">You are open URL:  </string>
     <string name="source">Open app</string>
     <string name="launch_that_activity_again">Launch that activity again</string>
+    <string name="developer_guide">Developer guide</string>
+    <string name="build_first_app_image">Build your first app image</string>
 </resources>

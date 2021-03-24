@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         val currentFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainer)
 
         if (currentFragment == null) {
-            val fragment = LoginFragment()
+            val fragment = ListFragment()
             supportFragmentManager.beginTransaction().add(R.id.fragmentContainer, fragment).commit()
         }
 
