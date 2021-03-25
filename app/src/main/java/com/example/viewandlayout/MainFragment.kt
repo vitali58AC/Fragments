@@ -18,7 +18,14 @@ class MainFragment() : Fragment() {
     ): View {
         _binding = FragmentMainBinding.inflate(inflater, container, false)
         val view = binding.root
+        val currentFragment = parentFragmentManager.findFragmentById(R.id.listFragmentContainer)
 
+        if (currentFragment == null) {
+            val fragment = ListFragment()
+            parentFragmentManager.beginTransaction().add(R.id.listFragmentContainer, fragment)
+                .commit()
+
+        }
 
 
         return view

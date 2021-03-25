@@ -64,14 +64,15 @@ class LoginFragment() : Fragment() {
                 if (checkValidationMail() && checkValidatePass()) {
                     validateState = validateState.validateTrue()
                     waitLogin()
-     /*               val activityClass = FirstAppActivity::class.java
-                    val firstAppActivityIntent = Intent(
-                        activity,
-                        activityClass
-                    )
-                    startActivity(firstAppActivityIntent)*/
+                    /*               val activityClass = FirstAppActivity::class.java
+                                   val firstAppActivityIntent = Intent(
+                                       activity,
+                                       activityClass
+                                   )
+                                   startActivity(firstAppActivityIntent)*/
+
                     parentFragmentManager.beginTransaction()
-                        .replace(R.id.fragmentContainer, ListFragment())
+                        .replace(R.id.fragmentContainer, MainFragment())
                         .commit()
                 } else {
                     validateState = validateState.validateFalse()
@@ -200,8 +201,13 @@ class LoginFragment() : Fragment() {
         super.onResume()
         buttonAvailable()
     }
+
     override fun onDestroy() {
         super.onDestroy()
+        //Программа ловит NPE, если приравнивать _binding k null.
+/*
         _binding = null
+*/
     }
+
 }

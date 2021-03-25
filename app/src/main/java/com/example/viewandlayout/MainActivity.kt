@@ -1,6 +1,8 @@
 package com.example.viewandlayout
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.viewandlayout.databinding.ActivityMainBinding
 
@@ -16,10 +18,16 @@ class MainActivity : AppCompatActivity() {
         val currentFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainer)
 
         if (currentFragment == null) {
-            val fragment = ListFragment()
+            val fragment = LoginFragment()
             supportFragmentManager.beginTransaction().add(R.id.fragmentContainer, fragment).commit()
         }
 
+    }
+
+    override fun onNewIntent(intent: Intent?) {
+        Log.e("FirstAppIntent","onNewIntent activity")
+        super.onNewIntent(intent)
+        setIntent(intent)
     }
 
   }
