@@ -21,11 +21,28 @@ class MainFragment() : Fragment() {
         val currentFragment = parentFragmentManager.findFragmentById(R.id.listFragmentContainer)
 
         if (currentFragment == null) {
+            val isTablet = context?.resources?.getBoolean(R.bool.isTablet)
             val fragment = ListFragment()
-            parentFragmentManager.beginTransaction().add(R.id.listFragmentContainer, fragment)
-                .commit()
+            val detailFragment = DetailFragmentFirstApp()
+            when (isTablet) {
+                true -> {
+                    parentFragmentManager.beginTransaction()
+                        .add(R.id.listFragmentContainer, fragment)
+                        .commit()
+                    parentFragmentManager.beginTransaction()
+                        .add(R.id.detailFragmentContainer, detailFragment).commit()
+
+                }
+                else -> {
+                    parentFragmentManager.beginTransaction()
+                        .add(R.id.listFragmentContainer, fragment)
+                        .commit()
+                }
+            }
+
 
         }
+
 
 
         return view
