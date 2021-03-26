@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.view.children
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
@@ -23,15 +24,20 @@ class ListFragment(): Fragment() {
         _binding = FragmentListBinding.inflate(inflater, container, false)
         val view = binding.root
         binding.buildFirstApp.setOnClickListener {
-            parentFragmentManager.commit {
-                setCustomAnimations(
-                    R.anim.slide_in,
-                    R.anim.fade_out,
-                    R.anim.fade_in,
-                    R.anim.slide_out
-                )
-                replace(R.id.listFragmentContainer, DetailFragmentFirstApp())
-                addToBackStack(null)
+            val isTablet = context?.resources?.getBoolean(R.bool.isTablet)
+            if (isTablet == false) {
+                parentFragmentManager.commit {
+                    setCustomAnimations(
+                        R.anim.slide_in,
+                        R.anim.fade_out,
+                        R.anim.fade_in,
+                        R.anim.slide_out
+                    )
+                    replace(R.id.listFragmentContainer, DetailFragmentFirstApp())
+                    addToBackStack(null)
+                }
+            } else {
+                Toast.makeText(activity?.baseContext, "View now is open", Toast.LENGTH_SHORT).show()
             }
         }
 /*        binding.constraintContainer.let {it as ViewGroup}
