@@ -205,9 +205,7 @@ class LoginFragment() : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         //Программа ловит NPE, если приравнивать _binding k null.
-/*
-        _binding = null
-*/
+     /*   _binding = null*/
     }
 
 }

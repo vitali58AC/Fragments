@@ -32,9 +32,7 @@ class DetailFragmentFirstApp() : Fragment() {
         }
         if (needHelpActivator) displayHelp()
         if (toastCount == 0) {
-            /*Toast.makeText(activity?.baseContext, "You aren't developer. Before read the guide!", Toast.LENGTH_LONG)
-                .show()*/
-            toast(text = "You aren't developer. Before read the guide!", length = Toast.LENGTH_LONG)
+            //toast(text = "You aren't developer. Before read the guide!", length = Toast.LENGTH_LONG)
             toastCount++
         }
 

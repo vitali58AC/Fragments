@@ -4,10 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.viewandlayout.databinding.FragmentMainBinding
 
-class MainFragment() : Fragment() {
+class MainFragment() : Fragment(), IOnDetailChangeListener  {
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
 
@@ -18,7 +19,7 @@ class MainFragment() : Fragment() {
     ): View {
         _binding = FragmentMainBinding.inflate(inflater, container, false)
         val view = binding.root
-        val currentFragment = parentFragmentManager.findFragmentById(R.id.listFragmentContainer)
+        val currentFragment = childFragmentManager.findFragmentById(R.id.listFragmentContainer)
 
         if (currentFragment == null) {
             val isTablet = context?.resources?.getBoolean(R.bool.isTablet)
@@ -26,16 +27,17 @@ class MainFragment() : Fragment() {
             val detailFragment = DetailFragmentFirstApp()
             when (isTablet) {
                 true -> {
-                    parentFragmentManager.beginTransaction()
+                    childFragmentManager.beginTransaction()
                         .add(R.id.listFragmentContainer, fragment)
                         .commit()
-                    parentFragmentManager.beginTransaction()
+                    childFragmentManager.beginTransaction()
                         .add(R.id.detailFragmentContainer, detailFragment).commit()
 
                 }
                 else -> {
-                    parentFragmentManager.beginTransaction()
-                        .add(R.id.listFragmentContainer, fragment)
+                    childFragmentManager.beginTransaction()
+                        .replace(R.id.listFragmentContainer, fragment, "1")
+                        .addToBackStack(null)
                         .commit()
                 }
             }
@@ -46,5 +48,10 @@ class MainFragment() : Fragment() {
 
 
         return view
+    }
+
+
+    override fun onChange(data: Any) {
+        Toast.makeText(activity?.baseContext, data as String, Toast.LENGTH_SHORT).show()
     }
 }
