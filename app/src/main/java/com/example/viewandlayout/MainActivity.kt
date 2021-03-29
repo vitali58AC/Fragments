@@ -27,45 +27,17 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-/*    override fun onBackPressed() {
-        supportFragmentManager.findFragmentByTag("1")
-            ?.childFragmentManager?.takeIf {
-                Log.e("MainActivity", "ЧИСЛО ${it.backStackEntryCount}")
-                it.backStackEntryCount > 0
-            }?.popBackStack() ?: super.onBackPressed()
-    }*/
-
-    //Здесь нужно пояснение) Скопированный java код.
     override fun onBackPressed() {
-        for (fragment in supportFragmentManager.fragments) {
-            if (fragment.isVisible && hasBackStack(fragment)) {
-                if (popFragment(fragment)) return
+        val mainFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainer)
+        if (mainFragment != null) {
+            val count = mainFragment.childFragmentManager.backStackEntryCount
+            if (count > 1) {
+                mainFragment.childFragmentManager.popBackStack()
+                return
             }
         }
         super.onBackPressed()
     }
-
-    private fun hasBackStack(fragment: Fragment): Boolean {
-        val childFragmentManager: FragmentManager = fragment.childFragmentManager
-        return childFragmentManager.backStackEntryCount > 0
-    }
-
-    private fun popFragment(fragment: Fragment): Boolean {
-        val fragmentManager: FragmentManager = fragment.childFragmentManager
-        for (childFragment in fragmentManager.fragments) {
-            if (childFragment.isVisible) {
-                return if (hasBackStack(childFragment)) {
-                    popFragment(childFragment)
-                } else {
-                    fragmentManager.popBackStack()
-                    true
-                }
-            }
-        }
-        return false
-    }
-
-
 
     override fun onNewIntent(intent: Intent?) {
         Log.e("FirstAppIntent", "onNewIntent activity")

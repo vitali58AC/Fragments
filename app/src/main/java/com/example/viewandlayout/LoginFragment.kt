@@ -65,15 +65,6 @@ class LoginFragment() : Fragment() {
                 if (checkValidationMail() && checkValidatePass()) {
                     validateState = validateState.validateTrue()
                     waitLogin()
-                    parentFragmentManager.commit {
-                        setCustomAnimations(
-                            R.anim.slide_in,
-                            R.anim.fade_out,
-                            R.anim.fade_in,
-                            R.anim.slide_out
-                        )
-                        replace(R.id.fragmentContainer, MainFragment())
-                    }
                 } else {
                     validateState = validateState.validateFalse()
                     if (!checkValidatePass()) {
@@ -153,7 +144,20 @@ class LoginFragment() : Fragment() {
         Handler(Looper.getMainLooper()).postDelayed({
             barToAdd.visibility = View.GONE
             updateWaiteLoginState(true)
+            callback()
         }, 2000)
+    }
+
+    private fun callback() {
+        parentFragmentManager.commit {
+            setCustomAnimations(
+                R.anim.slide_in,
+                R.anim.fade_out,
+                R.anim.fade_in,
+                R.anim.slide_out
+            )
+            replace(R.id.fragmentContainer, MainFragment())
+        }
     }
 
     //Решение из интернета на проверку email на валидность формы, работает отлично.
@@ -204,8 +208,7 @@ class LoginFragment() : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-        //Программа ловит NPE, если приравнивать _binding k null.
-     /*   _binding = null*/
+           _binding = null
     }
 
 }

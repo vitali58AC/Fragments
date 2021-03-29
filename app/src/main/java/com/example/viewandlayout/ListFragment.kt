@@ -14,7 +14,7 @@ import com.example.viewandlayout.databinding.FragmentListBinding
 class ListFragment() : Fragment() {
     private var _binding: FragmentListBinding? = null
     private val binding get() = _binding!!
-    private val parentListener = parentFragment as? IOnDetailChangeListener
+    private val parentListener by lazy { parentFragment as? IOnDetailChangeListener}
 
 
     override fun onCreateView(
