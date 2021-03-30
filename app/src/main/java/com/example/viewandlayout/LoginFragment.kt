@@ -64,7 +64,17 @@ class LoginFragment() : Fragment() {
             override fun onClick(v: View?) {
                 if (checkValidationMail() && checkValidatePass()) {
                     validateState = validateState.validateTrue()
-                    waitLogin()
+                    waitLogin {
+                        parentFragmentManager.commit {
+                            setCustomAnimations(
+                                R.anim.slide_in,
+                                R.anim.fade_out,
+                                R.anim.fade_in,
+                                R.anim.slide_out
+                            )
+                            replace(R.id.fragmentContainer, MainFragment())
+                        }
+                    }
                 } else {
                     validateState = validateState.validateFalse()
                     if (!checkValidatePass()) {
@@ -130,8 +140,7 @@ class LoginFragment() : Fragment() {
         }
     }
 
-    //Динамическое создание прогресс бара со всей его логикой из задания
-    private fun waitLogin() {
+    private fun waitLogin(callback: () -> Unit) {
         val barToAdd = ProgressBar(activity).apply {
             layoutParams = ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT,
@@ -146,18 +155,6 @@ class LoginFragment() : Fragment() {
             updateWaiteLoginState(true)
             callback()
         }, 2000)
-    }
-
-    private fun callback() {
-        parentFragmentManager.commit {
-            setCustomAnimations(
-                R.anim.slide_in,
-                R.anim.fade_out,
-                R.anim.fade_in,
-                R.anim.slide_out
-            )
-            replace(R.id.fragmentContainer, MainFragment())
-        }
     }
 
     //Решение из интернета на проверку email на валидность формы, работает отлично.
